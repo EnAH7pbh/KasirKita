@@ -94,6 +94,11 @@ public class KasirKita extends javax.swing.JFrame {
         jButton2.setText("jButton2");
 
         jButton3.setText("Delete");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         HitungBelanja.setText("Hitung Belanja");
         HitungBelanja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -280,6 +285,13 @@ public class KasirKita extends javax.swing.JFrame {
         }
         HasilTB.setText(formatKurensi.format(total));
     }//GEN-LAST:event_HitungBelanjaActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        TabelKasir.removeRow(jTable1.getSelectedRow());
+        for (int i = jTable1.getSelectedRowCount(); i < TabelKasir.getRowCount(); i++) {
+            TabelKasir.setValueAt(i+1, i, 0);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
