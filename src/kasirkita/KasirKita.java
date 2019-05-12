@@ -16,6 +16,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JFrame;
 
 /**
  *
@@ -35,6 +36,7 @@ public class KasirKita extends javax.swing.JFrame {
     BufferedReader br;
     Date waktu;
     SimpleDateFormat formatTanggal;
+    JFrame input ;
 
     public KasirKita() {
         initComponents();
@@ -44,6 +46,7 @@ public class KasirKita extends javax.swing.JFrame {
         formatTanggal = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
         formatKurensi = NumberFormat.getCurrencyInstance(getLocale());
         TabelKasir = (DefaultTableModel) jTable1.getModel();
+        input = new JFrame("Masukkan Qty");
         setLocationRelativeTo(this);
     }
 
@@ -678,7 +681,7 @@ public class KasirKita extends javax.swing.JFrame {
     }//GEN-LAST:event_RubickMouseExited
 
     private void ZeusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ZeusMouseClicked
-        Double qty =JOptionPane.showInputDialog(frame, "What's your name?");
+        String qty =JOptionPane.showInputDialog(input, "What's your name?");
     }//GEN-LAST:event_ZeusMouseClicked
 
     /**
