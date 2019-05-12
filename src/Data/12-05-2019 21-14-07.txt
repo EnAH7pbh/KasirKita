@@ -1,5 +1,0 @@
-No,Nama Barang,Harga Barang,Qty
-1/fdsasdf/IDR213,123.00/12
-2/afddasf/IDR213.00/2
-3/afasf/IDR213,213.00/2
-Total Belanja : IDR2,984,328.00

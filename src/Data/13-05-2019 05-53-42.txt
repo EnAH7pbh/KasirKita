@@ -1,0 +1,2 @@
+No|Nama Barang|Harga Barang|Qty
+Total Belanja : IDR0.00
