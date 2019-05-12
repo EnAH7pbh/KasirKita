@@ -246,11 +246,11 @@ public class KasirKita extends javax.swing.JFrame {
         } else {
             data[0] = Integer.toString(TabelKasir.getRowCount() + 1);
             data[1] = TFNamaBarang.getText();
-            data[2] = TFHarga.getText();
+            data[2] = formatKurensi.format(Double.parseDouble(TFHarga.getText()));
             data[3] = TfJumlah.getText();
             boolean belumAda = true;
             for (int i = 0; i < TabelKasir.getRowCount(); i++) {
-                if (data[0].equals(TabelKasir.getValueAt(i, 0))) {
+                if (data[1].equals(TabelKasir.getValueAt(i, 1))) {
                     belumAda = false;
                     break;
                 }
@@ -289,7 +289,8 @@ public class KasirKita extends javax.swing.JFrame {
     private void HitungBelanjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HitungBelanjaActionPerformed
         Double total=0.0;
         for (int i = 0; i < TabelKasir.getRowCount(); i++) {
-            Double temp=Double.parseDouble((String)TabelKasir.getValueAt(i, 3))*Double.parseDouble((String) TabelKasir.getValueAt(i,2));
+            String harga = (String) TabelKasir.getValueAt(i,2);
+            Double temp=Double.parseDouble((String)TabelKasir.getValueAt(i, 3))*Double.parseDouble(harga.replaceAll("[^0-9.]", ""));
             total+=temp;
         }
         HasilTB.setText(formatKurensi.format(total));
