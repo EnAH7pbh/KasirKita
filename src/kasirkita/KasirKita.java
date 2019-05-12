@@ -5,6 +5,7 @@
  */
 package kasirkita;
 
+import java.awt.Color;
 import java.text.NumberFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.*;
@@ -40,7 +41,7 @@ public class KasirKita extends javax.swing.JFrame {
         data = new String[4];
         simpanan = new File("src/Data");
         waktu = new Date();
-        formatTanggal = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss"); 
+        formatTanggal = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
         formatKurensi = NumberFormat.getCurrencyInstance(getLocale());
         TabelKasir = (DefaultTableModel) jTable1.getModel();
         setLocationRelativeTo(this);
@@ -70,8 +71,23 @@ public class KasirKita extends javax.swing.JFrame {
         TotalBelanja = new javax.swing.JLabel();
         HasilTB = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        Zeus = new javax.swing.JLabel();
+        Techies = new javax.swing.JLabel();
+        PA = new javax.swing.JLabel();
+        MK = new javax.swing.JLabel();
+        CM = new javax.swing.JLabel();
+        TB = new javax.swing.JLabel();
+        Lina = new javax.swing.JLabel();
+        Pudge = new javax.swing.JLabel();
+        SF = new javax.swing.JLabel();
+        LC = new javax.swing.JLabel();
+        Jugger = new javax.swing.JLabel();
+        IO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1230, 650));
+        setSize(new java.awt.Dimension(1215, 619));
+        getContentPane().setLayout(null);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -99,12 +115,17 @@ public class KasirKita extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(3).setMaxWidth(60);
         }
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(846, 216, 359, 350);
+
         Tambah.setText("Tambah");
         Tambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TambahActionPerformed(evt);
             }
         });
+        getContentPane().add(Tambah);
+        Tambah.setBounds(1122, 186, 71, 23);
 
         Load.setText("Load");
         Load.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +133,8 @@ public class KasirKita extends javax.swing.JFrame {
                 LoadActionPerformed(evt);
             }
         });
+        getContentPane().add(Load);
+        Load.setBounds(992, 186, 55, 23);
 
         Delete.setText("Delete");
         Delete.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +142,8 @@ public class KasirKita extends javax.swing.JFrame {
                 DeleteActionPerformed(evt);
             }
         });
+        getContentPane().add(Delete);
+        Delete.setBounds(1053, 186, 63, 23);
 
         HitungBelanja.setText("Hitung Belanja");
         HitungBelanja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -127,117 +152,190 @@ public class KasirKita extends javax.swing.JFrame {
                 HitungBelanjaActionPerformed(evt);
             }
         });
+        getContentPane().add(HitungBelanja);
+        HitungBelanja.setBounds(1104, 572, 101, 36);
 
         LabelNamaBarang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LabelNamaBarang.setText("Nama Barang");
+        getContentPane().add(LabelNamaBarang);
+        LabelNamaBarang.setBounds(842, 11, 80, 35);
 
         LabelJumlah.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LabelJumlah.setText("Qty");
+        getContentPane().add(LabelJumlah);
+        LabelJumlah.setBounds(842, 103, 80, 35);
 
         LabelHarga.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LabelHarga.setText("Harga Barang");
+        getContentPane().add(LabelHarga);
+        LabelHarga.setBounds(842, 57, 80, 35);
 
         TFHarga.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 TFHargaKeyTyped(evt);
             }
         });
+        getContentPane().add(TFHarga);
+        TFHarga.setBounds(932, 62, 273, 27);
 
         TFNamaBarang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 TFNamaBarangKeyTyped(evt);
             }
         });
+        getContentPane().add(TFNamaBarang);
+        TFNamaBarang.setBounds(932, 19, 273, 27);
 
         TfJumlah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 TfJumlahKeyTyped(evt);
             }
         });
+        getContentPane().add(TfJumlah);
+        TfJumlah.setBounds(932, 107, 273, 28);
 
         TotalBelanja.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         TotalBelanja.setText("Total Belanja");
+        getContentPane().add(TotalBelanja);
+        TotalBelanja.setBounds(846, 572, 78, 36);
 
         HasilTB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         HasilTB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        getContentPane().add(HasilTB);
+        HasilTB.setBounds(934, 572, 120, 36);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(846, 187, 136, 20);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(431, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(HasilTB, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(HitungBelanja))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(Load)
-                            .addGap(14, 14, 14)
-                            .addComponent(Delete)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(Tambah))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TotalBelanja, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelHarga, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelJumlah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelNamaBarang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TFNamaBarang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TFHarga, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TfJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LabelNamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(TFNamaBarang)
-                        .addGap(7, 7, 7)))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(LabelHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(TFHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TfJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Load)
-                    .addComponent(Delete)
-                    .addComponent(Tambah))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(HitungBelanja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(HasilTB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(TotalBelanja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        Zeus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Tempest_Helm_of_the_Thundergod.png"))); // NOI18N
+        Zeus.setOpaque(true);
+        Zeus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ZeusMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ZeusMouseExited(evt);
+            }
+        });
+        getContentPane().add(Zeus);
+        Zeus.setBounds(10, 11, 200, 146);
+
+        Techies.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Swine_of_the_Sunken_Galley.png"))); // NOI18N
+        Techies.setMaximumSize(new java.awt.Dimension(200, 133));
+        Techies.setMinimumSize(new java.awt.Dimension(200, 133));
+        Techies.setOpaque(true);
+        Techies.setPreferredSize(new java.awt.Dimension(200, 133));
+        Techies.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                TechiesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                TechiesMouseExited(evt);
+            }
+        });
+        getContentPane().add(Techies);
+        Techies.setBounds(216, 11, 200, 146);
+
+        PA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Manifold_Paradox.png"))); // NOI18N
+        PA.setOpaque(true);
+        PA.setPreferredSize(new java.awt.Dimension(200, 133));
+        PA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PAMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PAMouseExited(evt);
+            }
+        });
+        getContentPane().add(PA);
+        PA.setBounds(422, 11, 200, 146);
+
+        MK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Great_Sage's_Reckoning.png"))); // NOI18N
+        MK.setOpaque(true);
+        MK.setPreferredSize(new java.awt.Dimension(200, 133));
+        MK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                MKMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                MKMouseExited(evt);
+            }
+        });
+        getContentPane().add(MK);
+        MK.setBounds(632, 11, 200, 146);
+
+        CM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Frost_Avalanche.png"))); // NOI18N
+        CM.setOpaque(true);
+        CM.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                CMMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                CMMouseExited(evt);
+            }
+        });
+        getContentPane().add(CM);
+        CM.setBounds(10, 175, 200, 145);
+
+        TB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Fractal_Horns_of_Inner_Abysm.png"))); // NOI18N
+        TB.setOpaque(true);
+        TB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                TBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                TBMouseExited(evt);
+            }
+        });
+        getContentPane().add(TB);
+        TB.setBounds(216, 175, 200, 145);
+
+        Lina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Fiery_Soul_of_the_Slayer.png"))); // NOI18N
+        Lina.setOpaque(true);
+        Lina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LinaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LinaMouseExited(evt);
+            }
+        });
+        getContentPane().add(Lina);
+        Lina.setBounds(426, 175, 200, 145);
+
+        Pudge.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Feast_of_Abscession.png"))); // NOI18N
+        Pudge.setOpaque(true);
+        Pudge.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PudgeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PudgeMouseExited(evt);
+            }
+        });
+        getContentPane().add(Pudge);
+        Pudge.setBounds(632, 175, 200, 145);
+
+        SF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Demon_Eater.png"))); // NOI18N
+        SF.setOpaque(true);
+        getContentPane().add(SF);
+        SF.setBounds(10, 338, 200, 144);
+
+        LC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Blades_of_Voth_Domosh.png"))); // NOI18N
+        LC.setOpaque(true);
+        getContentPane().add(LC);
+        LC.setBounds(216, 338, 200, 144);
+
+        Jugger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Bladeform_Legacy.png"))); // NOI18N
+        Jugger.setOpaque(true);
+        getContentPane().add(Jugger);
+        Jugger.setBounds(422, 338, 200, 144);
+
+        IO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Benevolent_Companion.png"))); // NOI18N
+        IO.setOpaque(true);
+        getContentPane().add(IO);
+        IO.setBounds(632, 338, 204, 144);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -296,7 +394,7 @@ public class KasirKita extends javax.swing.JFrame {
             total += temp;
         }
         HasilTB.setText(formatKurensi.format(total));
-        file = new File("src/Data/"+formatTanggal.format(waktu)+".txt");
+        file = new File("src/Data/" + formatTanggal.format(waktu) + ".txt");
         try {
             bw = new BufferedWriter(new FileWriter(file));
             for (int i = 0; i < jTable1.getColumnCount(); i++) {
@@ -315,7 +413,7 @@ public class KasirKita extends javax.swing.JFrame {
                 }
                 bw.newLine();
             }
-            bw.write("Total Belanja : "+HasilTB.getText());
+            bw.write("Total Belanja : " + HasilTB.getText());
             bw.close();
         } catch (Exception e) {
         }
@@ -353,6 +451,86 @@ public class KasirKita extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_LoadActionPerformed
 
+    private void ZeusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ZeusMouseEntered
+        Zeus.setBackground(Color.RED);
+        TFNamaBarang.setText("Tempest Helm of the Thundergod");
+    }//GEN-LAST:event_ZeusMouseEntered
+
+    private void ZeusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ZeusMouseExited
+        TFNamaBarang.setText("");
+        Zeus.setBackground(getBackground());
+    }//GEN-LAST:event_ZeusMouseExited
+
+    private void TechiesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TechiesMouseEntered
+        Techies.setBackground(Color.RED);
+        TFNamaBarang.setText("Swine of the Sunken Galley");
+    }//GEN-LAST:event_TechiesMouseEntered
+
+    private void TechiesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TechiesMouseExited
+        Techies.setBackground(getBackground());
+        TFNamaBarang.setText("");
+    }//GEN-LAST:event_TechiesMouseExited
+
+    private void PAMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PAMouseEntered
+        PA.setBackground(Color.RED);
+        TFNamaBarang.setText("Manifold Paradox");
+    }//GEN-LAST:event_PAMouseEntered
+
+    private void PAMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PAMouseExited
+        PA.setBackground(getBackground());
+        TFNamaBarang.setText("");
+    }//GEN-LAST:event_PAMouseExited
+
+    private void MKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MKMouseEntered
+        MK.setBackground(Color.RED);
+        TFNamaBarang.setText("Great Sage's Reckoning");
+    }//GEN-LAST:event_MKMouseEntered
+
+    private void MKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MKMouseExited
+        MK.setBackground(getBackground());
+        TFNamaBarang.setText("");
+    }//GEN-LAST:event_MKMouseExited
+
+    private void CMMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CMMouseEntered
+        CM.setBackground(Color.RED);
+        TFNamaBarang.setText("Frost Avalanche");
+    }//GEN-LAST:event_CMMouseEntered
+
+    private void CMMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CMMouseExited
+        TFNamaBarang.setText("");
+        CM.setBackground(getBackground());
+    }//GEN-LAST:event_CMMouseExited
+
+    private void TBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TBMouseEntered
+        TB.setBackground(Color.RED);
+        TFNamaBarang.setText("Fractal Horns of Inner Abysm");
+    }//GEN-LAST:event_TBMouseEntered
+
+    private void TBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TBMouseExited
+        TB.setBackground(getBackground());
+        TFNamaBarang.setText("");
+    }//GEN-LAST:event_TBMouseExited
+
+    private void LinaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LinaMouseEntered
+        Lina.setBackground(Color.RED);
+        TFNamaBarang.setText("Fiery Soul of the Slayer");
+    }//GEN-LAST:event_LinaMouseEntered
+
+    private void LinaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LinaMouseExited
+        Lina.setBackground(getBackground());
+        TFNamaBarang.setText("");
+    }//GEN-LAST:event_LinaMouseExited
+
+    private void PudgeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PudgeMouseEntered
+        Pudge.setBackground(Color.RED);
+        TFNamaBarang.setText("Feast of Abscession");
+    }//GEN-LAST:event_PudgeMouseEntered
+
+    private void PudgeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PudgeMouseExited
+        Pudge.setBackground(getBackground());
+        TFNamaBarang.setText("");
+    }//GEN-LAST:event_PudgeMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -389,18 +567,30 @@ public class KasirKita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CM;
     private javax.swing.JButton Delete;
     private javax.swing.JLabel HasilTB;
     private javax.swing.JButton HitungBelanja;
+    private javax.swing.JLabel IO;
+    private javax.swing.JLabel Jugger;
+    private javax.swing.JLabel LC;
     private javax.swing.JLabel LabelHarga;
     private javax.swing.JLabel LabelJumlah;
     private javax.swing.JLabel LabelNamaBarang;
+    private javax.swing.JLabel Lina;
     private javax.swing.JButton Load;
+    private javax.swing.JLabel MK;
+    private javax.swing.JLabel PA;
+    private javax.swing.JLabel Pudge;
+    private javax.swing.JLabel SF;
+    private javax.swing.JLabel TB;
     private javax.swing.JTextField TFHarga;
     private javax.swing.JTextField TFNamaBarang;
     private javax.swing.JButton Tambah;
+    private javax.swing.JLabel Techies;
     private javax.swing.JTextField TfJumlah;
     private javax.swing.JLabel TotalBelanja;
+    private javax.swing.JLabel Zeus;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
