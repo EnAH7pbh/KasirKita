@@ -1,3 +1,3 @@
 No,Nama Barang,Harga Barang,Qty
-1/coklat/IDR10,000.00/2
-2/pisang/IDR20,000.00/3
+1/asdasdf/IDR213,123.00/123231
+IDR26,263,360,413.00
