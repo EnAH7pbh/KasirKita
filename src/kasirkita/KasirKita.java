@@ -70,7 +70,6 @@ public class KasirKita extends javax.swing.JFrame {
         TfJumlah = new javax.swing.JTextField();
         TotalBelanja = new javax.swing.JLabel();
         HasilTB = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         Zeus = new javax.swing.JLabel();
         Techies = new javax.swing.JLabel();
         PA = new javax.swing.JLabel();
@@ -120,7 +119,7 @@ public class KasirKita extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(890, 220, 359, 350);
+        jScrollPane1.setBounds(879, 220, 370, 350);
 
         Tambah.setText("Tambah");
         Tambah.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +128,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Tambah);
-        Tambah.setBounds(1180, 190, 71, 23);
+        Tambah.setBounds(1171, 190, 80, 23);
 
         Load.setText("Load");
         Load.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +137,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Load);
-        Load.setBounds(1040, 190, 55, 23);
+        Load.setBounds(1020, 190, 60, 23);
 
         Delete.setText("Delete");
         Delete.addActionListener(new java.awt.event.ActionListener() {
@@ -147,9 +146,10 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Delete);
-        Delete.setBounds(1110, 190, 63, 23);
+        Delete.setBounds(1090, 190, 70, 23);
 
-        HitungBelanja.setText("Hitung Belanja");
+        HitungBelanja.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        HitungBelanja.setText("=");
         HitungBelanja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         HitungBelanja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +157,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(HitungBelanja);
-        HitungBelanja.setBounds(1150, 580, 101, 36);
+        HitungBelanja.setBounds(1180, 580, 71, 70);
 
         LabelNamaBarang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LabelNamaBarang.setText("Nama Barang");
@@ -198,24 +198,25 @@ public class KasirKita extends javax.swing.JFrame {
         getContentPane().add(TfJumlah);
         TfJumlah.setBounds(980, 130, 273, 28);
 
-        TotalBelanja.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        TotalBelanja.setText("Total Belanja");
+        TotalBelanja.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        TotalBelanja.setForeground(new java.awt.Color(255, 0, 51));
+        TotalBelanja.setText("TOTAL BELANJA :");
         getContentPane().add(TotalBelanja);
-        TotalBelanja.setBounds(890, 580, 78, 36);
+        TotalBelanja.setBounds(610, 580, 220, 70);
 
-        HasilTB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        HasilTB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        HasilTB.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        HasilTB.setForeground(new java.awt.Color(255, 0, 51));
+        HasilTB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(HasilTB);
-        HasilTB.setBounds(1020, 580, 120, 36);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(890, 190, 136, 20);
+        HasilTB.setBounds(860, 580, 300, 70);
 
         Zeus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Zeus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Tempest_Helm_of_the_Thundergod.png"))); // NOI18N
         Zeus.setOpaque(true);
         Zeus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ZeusMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ZeusMouseEntered(evt);
             }
@@ -523,132 +524,162 @@ public class KasirKita extends javax.swing.JFrame {
     private void ZeusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ZeusMouseEntered
         Zeus.setBackground(Color.RED);
         TFNamaBarang.setText("Tempest Helm of the Thundergod");
+        TFHarga.setText(formatKurensi.format(800000));
     }//GEN-LAST:event_ZeusMouseEntered
 
     private void ZeusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ZeusMouseExited
         TFNamaBarang.setText("");
         Zeus.setBackground(getBackground());
+        TFHarga.setText("");
     }//GEN-LAST:event_ZeusMouseExited
 
     private void TechiesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TechiesMouseEntered
         Techies.setBackground(Color.RED);
         TFNamaBarang.setText("Swine of the Sunken Galley");
+        TFHarga.setText(formatKurensi.format(750000));
     }//GEN-LAST:event_TechiesMouseEntered
 
     private void TechiesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TechiesMouseExited
         Techies.setBackground(getBackground());
         TFNamaBarang.setText("");
+        TFHarga.setText("");
     }//GEN-LAST:event_TechiesMouseExited
 
     private void PAMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PAMouseEntered
         PA.setBackground(Color.RED);
         TFNamaBarang.setText("Manifold Paradox");
+        TFHarga.setText(formatKurensi.format(700000));
     }//GEN-LAST:event_PAMouseEntered
 
     private void PAMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PAMouseExited
         PA.setBackground(getBackground());
         TFNamaBarang.setText("");
+        TFHarga.setText("");
     }//GEN-LAST:event_PAMouseExited
 
     private void MKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MKMouseEntered
         MK.setBackground(Color.RED);
         TFNamaBarang.setText("Great Sage's Reckoning");
+        TFHarga.setText(formatKurensi.format(650000));
     }//GEN-LAST:event_MKMouseEntered
 
     private void MKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MKMouseExited
         MK.setBackground(getBackground());
         TFNamaBarang.setText("");
+        TFHarga.setText("");
     }//GEN-LAST:event_MKMouseExited
 
     private void CMMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CMMouseEntered
         CM.setBackground(Color.RED);
         TFNamaBarang.setText("Frost Avalanche");
+        TFHarga.setText(formatKurensi.format(600000));
     }//GEN-LAST:event_CMMouseEntered
 
     private void CMMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CMMouseExited
         TFNamaBarang.setText("");
         CM.setBackground(getBackground());
+        TFHarga.setText("");
     }//GEN-LAST:event_CMMouseExited
 
     private void TBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TBMouseEntered
         TB.setBackground(Color.RED);
         TFNamaBarang.setText("Fractal Horns of Inner Abysm");
+        TFHarga.setText(formatKurensi.format(550000));
     }//GEN-LAST:event_TBMouseEntered
 
     private void TBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TBMouseExited
         TB.setBackground(getBackground());
         TFNamaBarang.setText("");
+        TFHarga.setText("");
     }//GEN-LAST:event_TBMouseExited
 
     private void LinaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LinaMouseEntered
         Lina.setBackground(Color.RED);
         TFNamaBarang.setText("Fiery Soul of the Slayer");
+        TFHarga.setText(formatKurensi.format(500000));
     }//GEN-LAST:event_LinaMouseEntered
 
     private void LinaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LinaMouseExited
         Lina.setBackground(getBackground());
         TFNamaBarang.setText("");
+        TFHarga.setText("");
     }//GEN-LAST:event_LinaMouseExited
 
     private void PudgeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PudgeMouseEntered
         Pudge.setBackground(Color.RED);
         TFNamaBarang.setText("Feast of Abscession");
+        TFHarga.setText(formatKurensi.format(450000));
     }//GEN-LAST:event_PudgeMouseEntered
 
     private void PudgeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PudgeMouseExited
         Pudge.setBackground(getBackground());
         TFNamaBarang.setText("");
+        TFHarga.setText("");
     }//GEN-LAST:event_PudgeMouseExited
 
     private void SFMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SFMouseEntered
         SF.setBackground(Color.RED);
         TFNamaBarang.setText("Demon Eater");
+        TFHarga.setText(formatKurensi.format(400000));
     }//GEN-LAST:event_SFMouseEntered
 
     private void SFMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SFMouseExited
         SF.setBackground(getBackground());
         TFNamaBarang.setText("");
+        TFHarga.setText("");
     }//GEN-LAST:event_SFMouseExited
 
     private void LCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LCMouseEntered
         LC.setBackground(Color.RED);
         TFNamaBarang.setText("Blades of Voth Domosh");
+        TFHarga.setText(formatKurensi.format(350000));
     }//GEN-LAST:event_LCMouseEntered
 
     private void LCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LCMouseExited
         LC.setBackground(getBackground());
         TFNamaBarang.setText("");
+        TFHarga.setText("");
     }//GEN-LAST:event_LCMouseExited
 
     private void JuggerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JuggerMouseEntered
         Jugger.setBackground(Color.RED);
         TFNamaBarang.setText("Bladeform Legacy");
+        TFHarga.setText(formatKurensi.format(300000));
     }//GEN-LAST:event_JuggerMouseEntered
 
     private void JuggerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JuggerMouseExited
         Jugger.setBackground(getBackground());
         TFNamaBarang.setText("");
+        TFHarga.setText("");
     }//GEN-LAST:event_JuggerMouseExited
 
     private void IOMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IOMouseEntered
         IO.setBackground(Color.RED);
         TFNamaBarang.setText("Benevolent Companion");
+        TFHarga.setText(formatKurensi.format(250000));
     }//GEN-LAST:event_IOMouseEntered
 
     private void IOMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IOMouseExited
         IO.setBackground(getBackground());
         TFNamaBarang.setText("");
+        TFHarga.setText("");
     }//GEN-LAST:event_IOMouseExited
 
     private void RubickMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RubickMouseEntered
         Rubick.setBackground(Color.RED);
         TFNamaBarang.setText("The Magus Cypher");
+        TFHarga.setText(formatKurensi.format(200000));
     }//GEN-LAST:event_RubickMouseEntered
 
     private void RubickMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RubickMouseExited
         Rubick.setBackground(getBackground());
         TFNamaBarang.setText("");
+        TFHarga.setText("");
     }//GEN-LAST:event_RubickMouseExited
+
+    private void ZeusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ZeusMouseClicked
+        Double qty =JOptionPane.showInputDialog(frame, "What's your name?");
+    }//GEN-LAST:event_ZeusMouseClicked
 
     /**
      * @param args the command line arguments
@@ -711,7 +742,6 @@ public class KasirKita extends javax.swing.JFrame {
     private javax.swing.JTextField TfJumlah;
     private javax.swing.JLabel TotalBelanja;
     private javax.swing.JLabel Zeus;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
