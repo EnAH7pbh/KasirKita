@@ -83,10 +83,14 @@ public class KasirKita extends javax.swing.JFrame {
         LC = new javax.swing.JLabel();
         Jugger = new javax.swing.JLabel();
         IO = new javax.swing.JLabel();
+        Rubick = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1230, 650));
-        setSize(new java.awt.Dimension(1215, 619));
+        setMaximumSize(new java.awt.Dimension(1300, 700));
+        setMinimumSize(new java.awt.Dimension(1300, 700));
+        setPreferredSize(new java.awt.Dimension(1300, 700));
+        setSize(new java.awt.Dimension(1300, 700));
         getContentPane().setLayout(null);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -116,7 +120,7 @@ public class KasirKita extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(846, 216, 359, 350);
+        jScrollPane1.setBounds(890, 220, 359, 350);
 
         Tambah.setText("Tambah");
         Tambah.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +129,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Tambah);
-        Tambah.setBounds(1122, 186, 71, 23);
+        Tambah.setBounds(1180, 190, 71, 23);
 
         Load.setText("Load");
         Load.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +138,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Load);
-        Load.setBounds(992, 186, 55, 23);
+        Load.setBounds(1040, 190, 55, 23);
 
         Delete.setText("Delete");
         Delete.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +147,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Delete);
-        Delete.setBounds(1053, 186, 63, 23);
+        Delete.setBounds(1110, 190, 63, 23);
 
         HitungBelanja.setText("Hitung Belanja");
         HitungBelanja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -153,22 +157,22 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(HitungBelanja);
-        HitungBelanja.setBounds(1104, 572, 101, 36);
+        HitungBelanja.setBounds(1150, 580, 101, 36);
 
         LabelNamaBarang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LabelNamaBarang.setText("Nama Barang");
         getContentPane().add(LabelNamaBarang);
-        LabelNamaBarang.setBounds(842, 11, 80, 35);
+        LabelNamaBarang.setBounds(880, 30, 80, 35);
 
         LabelJumlah.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LabelJumlah.setText("Qty");
         getContentPane().add(LabelJumlah);
-        LabelJumlah.setBounds(842, 103, 80, 35);
+        LabelJumlah.setBounds(880, 130, 80, 35);
 
         LabelHarga.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LabelHarga.setText("Harga Barang");
         getContentPane().add(LabelHarga);
-        LabelHarga.setBounds(842, 57, 80, 35);
+        LabelHarga.setBounds(880, 80, 80, 35);
 
         TFHarga.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -176,7 +180,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TFHarga);
-        TFHarga.setBounds(932, 62, 273, 27);
+        TFHarga.setBounds(980, 80, 273, 27);
 
         TFNamaBarang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -184,7 +188,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TFNamaBarang);
-        TFNamaBarang.setBounds(932, 19, 273, 27);
+        TFNamaBarang.setBounds(980, 30, 273, 27);
 
         TfJumlah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -192,22 +196,23 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TfJumlah);
-        TfJumlah.setBounds(932, 107, 273, 28);
+        TfJumlah.setBounds(980, 130, 273, 28);
 
         TotalBelanja.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         TotalBelanja.setText("Total Belanja");
         getContentPane().add(TotalBelanja);
-        TotalBelanja.setBounds(846, 572, 78, 36);
+        TotalBelanja.setBounds(890, 580, 78, 36);
 
         HasilTB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         HasilTB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         getContentPane().add(HasilTB);
-        HasilTB.setBounds(934, 572, 120, 36);
+        HasilTB.setBounds(1020, 580, 120, 36);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(846, 187, 136, 20);
+        jComboBox1.setBounds(890, 190, 136, 20);
 
+        Zeus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Zeus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Tempest_Helm_of_the_Thundergod.png"))); // NOI18N
         Zeus.setOpaque(true);
         Zeus.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -219,8 +224,9 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Zeus);
-        Zeus.setBounds(10, 11, 200, 146);
+        Zeus.setBounds(0, 20, 210, 146);
 
+        Techies.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Techies.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Swine_of_the_Sunken_Galley.png"))); // NOI18N
         Techies.setMaximumSize(new java.awt.Dimension(200, 133));
         Techies.setMinimumSize(new java.awt.Dimension(200, 133));
@@ -235,8 +241,9 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Techies);
-        Techies.setBounds(216, 11, 200, 146);
+        Techies.setBounds(220, 20, 210, 146);
 
+        PA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Manifold_Paradox.png"))); // NOI18N
         PA.setOpaque(true);
         PA.setPreferredSize(new java.awt.Dimension(200, 133));
@@ -249,9 +256,12 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(PA);
-        PA.setBounds(422, 11, 200, 146);
+        PA.setBounds(440, 20, 210, 146);
 
+        MK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         MK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Great_Sage's_Reckoning.png"))); // NOI18N
+        MK.setMaximumSize(new java.awt.Dimension(200, 133));
+        MK.setMinimumSize(new java.awt.Dimension(200, 133));
         MK.setOpaque(true);
         MK.setPreferredSize(new java.awt.Dimension(200, 133));
         MK.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -263,8 +273,9 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(MK);
-        MK.setBounds(632, 11, 200, 146);
+        MK.setBounds(660, 20, 210, 146);
 
+        CM.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Frost_Avalanche.png"))); // NOI18N
         CM.setOpaque(true);
         CM.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -276,8 +287,9 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(CM);
-        CM.setBounds(10, 175, 200, 145);
+        CM.setBounds(0, 180, 210, 145);
 
+        TB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Fractal_Horns_of_Inner_Abysm.png"))); // NOI18N
         TB.setOpaque(true);
         TB.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -289,8 +301,9 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TB);
-        TB.setBounds(216, 175, 200, 145);
+        TB.setBounds(220, 180, 210, 145);
 
+        Lina.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Fiery_Soul_of_the_Slayer.png"))); // NOI18N
         Lina.setOpaque(true);
         Lina.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -302,8 +315,9 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Lina);
-        Lina.setBounds(426, 175, 200, 145);
+        Lina.setBounds(440, 180, 210, 145);
 
+        Pudge.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Pudge.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Feast_of_Abscession.png"))); // NOI18N
         Pudge.setOpaque(true);
         Pudge.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -315,27 +329,82 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Pudge);
-        Pudge.setBounds(632, 175, 200, 145);
+        Pudge.setBounds(660, 180, 210, 145);
 
+        SF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Demon_Eater.png"))); // NOI18N
         SF.setOpaque(true);
+        SF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                SFMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                SFMouseExited(evt);
+            }
+        });
         getContentPane().add(SF);
-        SF.setBounds(10, 338, 200, 144);
+        SF.setBounds(0, 340, 210, 144);
 
+        LC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Blades_of_Voth_Domosh.png"))); // NOI18N
         LC.setOpaque(true);
+        LC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LCMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LCMouseExited(evt);
+            }
+        });
         getContentPane().add(LC);
-        LC.setBounds(216, 338, 200, 144);
+        LC.setBounds(220, 340, 210, 144);
 
+        Jugger.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Jugger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Bladeform_Legacy.png"))); // NOI18N
         Jugger.setOpaque(true);
+        Jugger.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JuggerMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JuggerMouseExited(evt);
+            }
+        });
         getContentPane().add(Jugger);
-        Jugger.setBounds(422, 338, 200, 144);
+        Jugger.setBounds(440, 340, 210, 144);
 
+        IO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Benevolent_Companion.png"))); // NOI18N
         IO.setOpaque(true);
+        IO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                IOMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                IOMouseExited(evt);
+            }
+        });
         getContentPane().add(IO);
-        IO.setBounds(632, 338, 204, 144);
+        IO.setBounds(660, 340, 210, 144);
+
+        Rubick.setBackground(jLabel1.getBackground());
+        Rubick.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Rubick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_The_Magus_Cypher.png"))); // NOI18N
+        Rubick.setOpaque(true);
+        Rubick.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                RubickMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                RubickMouseExited(evt);
+            }
+        });
+        getContentPane().add(Rubick);
+        Rubick.setBounds(330, 500, 210, 140);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dota_2_game_background-1920x1080.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1300, 700);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -531,6 +600,56 @@ public class KasirKita extends javax.swing.JFrame {
         TFNamaBarang.setText("");
     }//GEN-LAST:event_PudgeMouseExited
 
+    private void SFMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SFMouseEntered
+        SF.setBackground(Color.RED);
+        TFNamaBarang.setText("Demon Eater");
+    }//GEN-LAST:event_SFMouseEntered
+
+    private void SFMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SFMouseExited
+        SF.setBackground(getBackground());
+        TFNamaBarang.setText("");
+    }//GEN-LAST:event_SFMouseExited
+
+    private void LCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LCMouseEntered
+        LC.setBackground(Color.RED);
+        TFNamaBarang.setText("Blades of Voth Domosh");
+    }//GEN-LAST:event_LCMouseEntered
+
+    private void LCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LCMouseExited
+        LC.setBackground(getBackground());
+        TFNamaBarang.setText("");
+    }//GEN-LAST:event_LCMouseExited
+
+    private void JuggerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JuggerMouseEntered
+        Jugger.setBackground(Color.RED);
+        TFNamaBarang.setText("Bladeform Legacy");
+    }//GEN-LAST:event_JuggerMouseEntered
+
+    private void JuggerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JuggerMouseExited
+        Jugger.setBackground(getBackground());
+        TFNamaBarang.setText("");
+    }//GEN-LAST:event_JuggerMouseExited
+
+    private void IOMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IOMouseEntered
+        IO.setBackground(Color.RED);
+        TFNamaBarang.setText("Benevolent Companion");
+    }//GEN-LAST:event_IOMouseEntered
+
+    private void IOMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IOMouseExited
+        IO.setBackground(getBackground());
+        TFNamaBarang.setText("");
+    }//GEN-LAST:event_IOMouseExited
+
+    private void RubickMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RubickMouseEntered
+        Rubick.setBackground(Color.RED);
+        TFNamaBarang.setText("The Magus Cypher");
+    }//GEN-LAST:event_RubickMouseEntered
+
+    private void RubickMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RubickMouseExited
+        Rubick.setBackground(getBackground());
+        TFNamaBarang.setText("");
+    }//GEN-LAST:event_RubickMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -582,6 +701,7 @@ public class KasirKita extends javax.swing.JFrame {
     private javax.swing.JLabel MK;
     private javax.swing.JLabel PA;
     private javax.swing.JLabel Pudge;
+    private javax.swing.JLabel Rubick;
     private javax.swing.JLabel SF;
     private javax.swing.JLabel TB;
     private javax.swing.JTextField TFHarga;
@@ -592,6 +712,7 @@ public class KasirKita extends javax.swing.JFrame {
     private javax.swing.JLabel TotalBelanja;
     private javax.swing.JLabel Zeus;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
