@@ -41,7 +41,7 @@ public class KasirKita extends javax.swing.JFrame {
     Date waktu;
     SimpleDateFormat formatTanggal;
     JFrame input;
-
+    
     public KasirKita() {
         initComponents();
         data = new String[4];
@@ -428,6 +428,14 @@ public class KasirKita extends javax.swing.JFrame {
         ResetInvit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ResetInvit.setText("Reset lalu Print");
         ResetInvit.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 51), 3, true));
+        ResetInvit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ResetInvitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ResetInvitMouseExited(evt);
+            }
+        });
         getContentPane().add(ResetInvit);
         ResetInvit.setBounds(1154, 560, 120, 60);
 
@@ -439,6 +447,12 @@ public class KasirKita extends javax.swing.JFrame {
         History.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 HistoryMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                HistoryMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                HistoryMouseExited(evt);
             }
         });
         getContentPane().add(History);
@@ -455,7 +469,7 @@ public class KasirKita extends javax.swing.JFrame {
         file = new File("src/Data/DataArcana.txt");
         try {
             br = new BufferedReader(new FileReader(file));
-
+            
             String barisPertama = br.readLine();
             //pisah teks pada barisPertama dengan tanda koma(,)
             //kemudian masukkan ke array         
@@ -468,7 +482,7 @@ public class KasirKita extends javax.swing.JFrame {
         try {
             Object[] dataBaris = br.lines().toArray();
             String barisPertama = br.readLine();
-
+            
             String[] namaKolom = barisPertama.split(",");
             //ambil model dan atur nama kolom tabel
             TabelKasir.setColumnIdentifiers(namaKolom);
@@ -765,11 +779,31 @@ public class KasirKita extends javax.swing.JFrame {
         
     }//GEN-LAST:event_HistoryMouseClicked
 
+    private void ResetInvitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ResetInvitMouseEntered
+        ResetInvit.setOpaque(true);
+        ResetInvit.setBackground(Color.WHITE);
+    }//GEN-LAST:event_ResetInvitMouseEntered
+
+    private void ResetInvitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ResetInvitMouseExited
+        ResetInvit.setBackground(getBackground());
+        ResetInvit.setOpaque(false);
+    }//GEN-LAST:event_ResetInvitMouseExited
+
+    private void HistoryMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HistoryMouseEntered
+        History.setOpaque(true);
+        History.setBackground(Color.WHITE);
+    }//GEN-LAST:event_HistoryMouseEntered
+
+    private void HistoryMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HistoryMouseExited
+        History.setBackground(getBackground());
+        History.setOpaque(false);
+    }//GEN-LAST:event_HistoryMouseExited
+    
     private void Belikuy(int Stock) throws HeadlessException {
         file = new File("src/Data/DataArcana.txt");
         String qty = JOptionPane.showInputDialog(input, "Berapa yang akan anda beli?");
         if (LabelNamaBarang1.getText().trim().isEmpty() || LabelHarga1.getText().trim().isEmpty() || qty.isEmpty()) {
-
+            
         } else {
             data[0] = Integer.toString(TabelKasir.getRowCount() + 1);
             data[1] = LabelNamaBarang1.getText();
@@ -794,12 +828,13 @@ public class KasirKita extends javax.swing.JFrame {
                     total += temp;
                 }
                 HasilTB.setText(formatKurensi.format(total));
-                stock[Stock]=String.valueOf(Integer.parseInt(stock[Stock])-Integer.parseInt(qty));
+                stock[Stock] = String.valueOf(Integer.parseInt(stock[Stock]) - Integer.parseInt(qty));
                 try {
                     bw = new BufferedWriter(new FileWriter(file));
-                    for (int i = 0; i <stock.length; i++) {
-                        if (i>0) 
-                            bw.write("#");                        
+                    for (int i = 0; i < stock.length; i++) {
+                        if (i > 0) {
+                            bw.write("#");
+                        }                        
                         bw.write(stock[i]);
                     }
                     bw.close();
