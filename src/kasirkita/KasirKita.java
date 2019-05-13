@@ -15,6 +15,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFrame;
@@ -66,7 +67,6 @@ public class KasirKita extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         Load = new javax.swing.JButton();
         Delete = new javax.swing.JButton();
-        HitungBelanja = new javax.swing.JButton();
         LabelNamaBarang = new javax.swing.JLabel();
         LabelHarga = new javax.swing.JLabel();
         TFHarga = new javax.swing.JTextField();
@@ -86,13 +86,16 @@ public class KasirKita extends javax.swing.JFrame {
         Jugger = new javax.swing.JLabel();
         IO = new javax.swing.JLabel();
         Rubick = new javax.swing.JLabel();
+        EXit = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1300, 700));
-        setMinimumSize(new java.awt.Dimension(1300, 700));
+        setMaximumSize(new java.awt.Dimension(1300, 760));
+        setMinimumSize(new java.awt.Dimension(1300, 760));
+        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1300, 700));
-        setSize(new java.awt.Dimension(1300, 700));
+        setSize(new java.awt.Dimension(1300, 760));
         getContentPane().setLayout(null);
 
         jTable1.setBackground(jLabel1.getBackground());
@@ -123,7 +126,7 @@ public class KasirKita extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(900, 130, 370, 350);
+        jScrollPane1.setBounds(900, 200, 370, 340);
 
         Load.setText("Load");
         Load.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +135,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Load);
-        Load.setBounds(1020, 490, 70, 70);
+        Load.setBounds(1090, 560, 70, 60);
 
         Delete.setText("Delete");
         Delete.addActionListener(new java.awt.event.ActionListener() {
@@ -141,44 +144,35 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Delete);
-        Delete.setBounds(1110, 490, 70, 70);
-
-        HitungBelanja.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        HitungBelanja.setText("=");
-        HitungBelanja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        HitungBelanja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HitungBelanjaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(HitungBelanja);
-        HitungBelanja.setBounds(1200, 490, 71, 70);
+        Delete.setBounds(1200, 560, 70, 60);
 
         LabelNamaBarang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LabelNamaBarang.setForeground(new java.awt.Color(255, 0, 51));
         LabelNamaBarang.setText("Nama Barang");
         getContentPane().add(LabelNamaBarang);
-        LabelNamaBarang.setBounds(900, 30, 80, 35);
+        LabelNamaBarang.setBounds(900, 90, 80, 30);
 
         LabelHarga.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LabelHarga.setForeground(new java.awt.Color(255, 0, 51));
         LabelHarga.setText("Harga Barang");
         getContentPane().add(LabelHarga);
-        LabelHarga.setBounds(900, 80, 80, 35);
+        LabelHarga.setBounds(900, 140, 80, 30);
         getContentPane().add(TFHarga);
-        TFHarga.setBounds(1000, 80, 270, 27);
+        TFHarga.setBounds(1000, 140, 270, 30);
         getContentPane().add(TFNamaBarang);
-        TFNamaBarang.setBounds(1000, 30, 270, 27);
+        TFNamaBarang.setBounds(1000, 90, 270, 30);
 
         TotalBelanja.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         TotalBelanja.setForeground(new java.awt.Color(255, 0, 51));
         TotalBelanja.setText("TOTAL BELANJA :");
         getContentPane().add(TotalBelanja);
-        TotalBelanja.setBounds(740, 580, 220, 70);
+        TotalBelanja.setBounds(740, 650, 220, 60);
 
         HasilTB.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         HasilTB.setForeground(new java.awt.Color(255, 0, 51));
         HasilTB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(HasilTB);
-        HasilTB.setBounds(980, 580, 290, 70);
+        HasilTB.setBounds(980, 650, 290, 60);
 
         Zeus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Zeus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Tempest_Helm_of_the_Thundergod.png"))); // NOI18N
@@ -194,7 +188,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Zeus);
-        Zeus.setBounds(20, 20, 210, 146);
+        Zeus.setBounds(20, 80, 210, 140);
 
         Techies.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Techies.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Swine_of_the_Sunken_Galley.png"))); // NOI18N
@@ -210,7 +204,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Techies);
-        Techies.setBounds(240, 20, 210, 146);
+        Techies.setBounds(240, 80, 210, 140);
 
         PA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Manifold_Paradox.png"))); // NOI18N
@@ -226,7 +220,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(PA);
-        PA.setBounds(460, 20, 210, 146);
+        PA.setBounds(460, 80, 210, 140);
 
         MK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         MK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Great_Sage's_Reckoning.png"))); // NOI18N
@@ -245,7 +239,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(MK);
-        MK.setBounds(680, 20, 210, 146);
+        MK.setBounds(680, 80, 210, 140);
 
         CM.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Frost_Avalanche.png"))); // NOI18N
@@ -261,7 +255,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(CM);
-        CM.setBounds(20, 180, 210, 145);
+        CM.setBounds(20, 240, 210, 140);
 
         TB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Fractal_Horns_of_Inner_Abysm.png"))); // NOI18N
@@ -277,7 +271,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TB);
-        TB.setBounds(240, 180, 210, 145);
+        TB.setBounds(240, 240, 210, 140);
 
         Lina.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Fiery_Soul_of_the_Slayer.png"))); // NOI18N
@@ -293,7 +287,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Lina);
-        Lina.setBounds(460, 180, 210, 145);
+        Lina.setBounds(460, 240, 210, 140);
 
         Pudge.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Pudge.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Feast_of_Abscession.png"))); // NOI18N
@@ -309,7 +303,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Pudge);
-        Pudge.setBounds(680, 180, 210, 145);
+        Pudge.setBounds(680, 240, 210, 140);
 
         SF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Demon_Eater.png"))); // NOI18N
@@ -325,7 +319,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(SF);
-        SF.setBounds(20, 340, 210, 144);
+        SF.setBounds(20, 400, 210, 140);
 
         LC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Blades_of_Voth_Domosh.png"))); // NOI18N
@@ -341,7 +335,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(LC);
-        LC.setBounds(240, 340, 210, 144);
+        LC.setBounds(240, 400, 210, 140);
 
         Jugger.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Jugger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Bladeform_Legacy.png"))); // NOI18N
@@ -357,7 +351,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Jugger);
-        Jugger.setBounds(460, 340, 210, 144);
+        Jugger.setBounds(460, 400, 210, 140);
 
         IO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Benevolent_Companion.png"))); // NOI18N
@@ -373,7 +367,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(IO);
-        IO.setBounds(680, 340, 210, 144);
+        IO.setBounds(680, 400, 210, 140);
 
         Rubick.setBackground(jLabel1.getBackground());
         Rubick.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -390,48 +384,51 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Rubick);
-        Rubick.setBounds(350, 500, 210, 140);
+        Rubick.setBounds(350, 570, 210, 140);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dota_2_game_background-1920x1080.jpg"))); // NOI18N
+        EXit.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        EXit.setForeground(new java.awt.Color(255, 0, 51));
+        EXit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EXit.setText("X");
+        EXit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EXitMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EXitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                EXitMouseExited(evt);
+            }
+        });
+        getContentPane().add(EXit);
+        EXit.setBounds(1270, 0, 34, 20);
+
+        jLabel2.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel2.setText("TOKO KITA PILIH ARCANAMU :");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(10, 10, 880, 60);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/wallpaper2you_458870.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1300, 700);
+        jLabel1.setBounds(0, 0, 1300, 760);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void HitungBelanjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HitungBelanjaActionPerformed
-        Double total = 0.0;
-        for (int i = 0; i < TabelKasir.getRowCount(); i++) {
-            String harga = (String) TabelKasir.getValueAt(i, 2);
-            Double temp = Double.parseDouble((String) TabelKasir.getValueAt(i, 3)) * Double.parseDouble(harga.replaceAll("[^0-9.]", ""));
-            total += temp;
-        }
-        HasilTB.setText(formatKurensi.format(total));
-        file = new File("src/Data/" + formatTanggal.format(waktu) + ".txt");
+    public void loaddata(){
+        file = new File("src/Data/DataArcana.txt");
         try {
-            bw = new BufferedWriter(new FileWriter(file));
-            for (int i = 0; i < jTable1.getColumnCount(); i++) {
-                if (i > 0) {
-                    bw.write("|");
-                }
-                bw.write(jTable1.getColumnName(i));
-            }
-            bw.newLine();
-            for (int i = 0; i < TabelKasir.getRowCount(); i++) {
-                for (int j = 0; j < TabelKasir.getColumnCount(); j++) {
-                    if (j > 0) {
-                        bw.write("_");
-                    }
-                    bw.write((String) TabelKasir.getValueAt(i, j));
-                }
-                bw.newLine();
-            }
-            bw.write("Total Belanja : " + HasilTB.getText());
-            bw.close();
-        } catch (Exception e) {
+            br = new BufferedReader(new FileReader(file));
+            
+            String barisPertama = br.readLine();
+            //pisah teks pada barisPertama dengan tanda koma(,)
+            //kemudian masukkan ke array
+            String[] namaKolom = barisPertama.split("#");            
+        } catch (IOException e) {
         }
-    }//GEN-LAST:event_HitungBelanjaActionPerformed
-
+    }
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
         TabelKasir.removeRow(jTable1.getSelectedRow());
         for (int i = jTable1.getSelectedRowCount(); i < TabelKasir.getRowCount(); i++) {
@@ -697,6 +694,20 @@ public class KasirKita extends javax.swing.JFrame {
         Belikuy();
     }//GEN-LAST:event_RubickMouseClicked
 
+    private void EXitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EXitMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_EXitMouseClicked
+
+    private void EXitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EXitMouseEntered
+        EXit.setOpaque(true);
+        EXit.setBackground(Color.BLUE);
+    }//GEN-LAST:event_EXitMouseEntered
+
+    private void EXitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EXitMouseExited
+        EXit.setBackground(getBackground());
+        EXit.setOpaque(false);
+    }//GEN-LAST:event_EXitMouseExited
+
     private void Belikuy() throws HeadlessException {
         String qty = JOptionPane.showInputDialog(input, "Berapa yang akan anda beli?");
         if (TFNamaBarang.getText().trim().isEmpty() || TFHarga.getText().trim().isEmpty() || qty.isEmpty()) {
@@ -717,6 +728,13 @@ public class KasirKita extends javax.swing.JFrame {
                 TabelKasir.addRow(data);
                 TFNamaBarang.setText("");
                 TFHarga.setText("");
+                Double total = 0.0;
+                for (int i = 0; i < TabelKasir.getRowCount(); i++) {
+                    String harga = (String) TabelKasir.getValueAt(i, 2);
+                    Double temp = Double.parseDouble((String) TabelKasir.getValueAt(i, 3)) * Double.parseDouble(harga.replaceAll("[^0-9.]", ""));
+                    total += temp;
+                }
+                HasilTB.setText(formatKurensi.format(total));               
             } else {
                 JOptionPane.showMessageDialog(null, "Data sudah ada !!!");
             }
@@ -761,8 +779,8 @@ public class KasirKita extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CM;
     private javax.swing.JButton Delete;
+    private javax.swing.JLabel EXit;
     private javax.swing.JLabel HasilTB;
-    private javax.swing.JButton HitungBelanja;
     private javax.swing.JLabel IO;
     private javax.swing.JLabel Jugger;
     private javax.swing.JLabel LC;
@@ -782,6 +800,7 @@ public class KasirKita extends javax.swing.JFrame {
     private javax.swing.JLabel TotalBelanja;
     private javax.swing.JLabel Zeus;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

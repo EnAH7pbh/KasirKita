@@ -1,0 +1,3 @@
+No|Nama Barang|Harga Barang|Qty
+1_Tempest Helm of the Thundergod_IDR800,000.00_5
+Total Belanja : IDR4,000,000.00

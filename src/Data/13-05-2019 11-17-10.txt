@@ -1,0 +1,3 @@
+No|Nama Barang|Harga Barang|Qty
+1_Feast of Abscession_IDR450,000.00_2
+Total Belanja : IDR900,000.00

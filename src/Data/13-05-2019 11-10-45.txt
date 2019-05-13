@@ -1,0 +1,4 @@
+No|Nama Barang|Harga Barang|Qty
+1_Tempest Helm of the Thundergod_IDR800,000.00_2
+2_Swine of the Sunken Galley_IDR750,000.00_2
+Total Belanja : IDR3,100,000.00
