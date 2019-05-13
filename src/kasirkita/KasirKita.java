@@ -92,6 +92,7 @@ public class KasirKita extends javax.swing.JFrame {
         Judul = new javax.swing.JLabel();
         ResetInvit = new javax.swing.JLabel();
         History = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -427,7 +428,7 @@ public class KasirKita extends javax.swing.JFrame {
         ResetInvit.setForeground(new java.awt.Color(255, 0, 51));
         ResetInvit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ResetInvit.setText("Reset lalu Print");
-        ResetInvit.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 51), 3, true));
+        ResetInvit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
         ResetInvit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ResetInvitMouseEntered(evt);
@@ -443,7 +444,7 @@ public class KasirKita extends javax.swing.JFrame {
         History.setForeground(new java.awt.Color(255, 0, 51));
         History.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         History.setText("History");
-        History.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 51), 3, true));
+        History.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
         History.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 HistoryMouseClicked(evt);
@@ -457,6 +458,13 @@ public class KasirKita extends javax.swing.JFrame {
         });
         getContentPane().add(History);
         History.setBounds(1030, 560, 100, 60);
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/b37ee2f20af88890f3cc51fcb8f2898dfa95e777_full - Copy.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(10, 570, 190, 184);
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/wallpaper2you_458870.jpg"))); // NOI18N
         getContentPane().add(Background);
@@ -909,6 +917,7 @@ public class KasirKita extends javax.swing.JFrame {
     private javax.swing.JLabel Techies;
     private javax.swing.JLabel TotalBelanja;
     private javax.swing.JLabel Zeus;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
