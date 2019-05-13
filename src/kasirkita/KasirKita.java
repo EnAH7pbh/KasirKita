@@ -16,6 +16,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFrame;
@@ -31,6 +32,7 @@ public class KasirKita extends javax.swing.JFrame {
      */
     DefaultTableModel TabelKasir;
     String[] data;
+    String[] stock;
     NumberFormat formatKurensi;
     File simpanan;
     File file;
@@ -49,9 +51,8 @@ public class KasirKita extends javax.swing.JFrame {
         formatKurensi = NumberFormat.getCurrencyInstance(getLocale());
         TabelKasir = (DefaultTableModel) jTable1.getModel();
         input = new JFrame("Masukkan Qty");
-        TFHarga.setEditable(false);
-        TFNamaBarang.setEditable(false);
         setLocationRelativeTo(this);
+        loaddata();
     }
 
     /**
@@ -66,11 +67,12 @@ public class KasirKita extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Load = new javax.swing.JButton();
-        Delete = new javax.swing.JButton();
+        LabelNamaBarang1 = new javax.swing.JLabel();
         LabelNamaBarang = new javax.swing.JLabel();
+        StockAvailable1 = new javax.swing.JLabel();
+        StockAvailable = new javax.swing.JLabel();
+        LabelHarga1 = new javax.swing.JLabel();
         LabelHarga = new javax.swing.JLabel();
-        TFHarga = new javax.swing.JTextField();
-        TFNamaBarang = new javax.swing.JTextField();
         TotalBelanja = new javax.swing.JLabel();
         HasilTB = new javax.swing.JLabel();
         Zeus = new javax.swing.JLabel();
@@ -87,8 +89,9 @@ public class KasirKita extends javax.swing.JFrame {
         IO = new javax.swing.JLabel();
         Rubick = new javax.swing.JLabel();
         EXit = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        Judul = new javax.swing.JLabel();
+        ResetInvit = new javax.swing.JLabel();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1300, 760));
@@ -98,7 +101,7 @@ public class KasirKita extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1300, 760));
         getContentPane().setLayout(null);
 
-        jTable1.setBackground(jLabel1.getBackground());
+        jTable1.setBackground(Background.getBackground());
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -135,32 +138,40 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Load);
-        Load.setBounds(1090, 560, 70, 60);
+        Load.setBounds(920, 560, 70, 60);
 
-        Delete.setText("Delete");
-        Delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Delete);
-        Delete.setBounds(1200, 560, 70, 60);
+        LabelNamaBarang1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        LabelNamaBarang1.setForeground(new java.awt.Color(255, 0, 51));
+        getContentPane().add(LabelNamaBarang1);
+        LabelNamaBarang1.setBounds(1030, 40, 240, 40);
 
-        LabelNamaBarang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LabelNamaBarang.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LabelNamaBarang.setForeground(new java.awt.Color(255, 0, 51));
-        LabelNamaBarang.setText("Nama Barang");
+        LabelNamaBarang.setText("Nama Item :");
         getContentPane().add(LabelNamaBarang);
-        LabelNamaBarang.setBounds(900, 90, 80, 30);
+        LabelNamaBarang.setBounds(900, 40, 90, 40);
 
-        LabelHarga.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        StockAvailable1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        StockAvailable1.setForeground(new java.awt.Color(255, 0, 51));
+        getContentPane().add(StockAvailable1);
+        StockAvailable1.setBounds(1030, 140, 240, 40);
+
+        StockAvailable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        StockAvailable.setForeground(new java.awt.Color(255, 0, 51));
+        StockAvailable.setText("Stock Available :");
+        getContentPane().add(StockAvailable);
+        StockAvailable.setBounds(900, 140, 130, 40);
+
+        LabelHarga1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        LabelHarga1.setForeground(new java.awt.Color(255, 0, 51));
+        getContentPane().add(LabelHarga1);
+        LabelHarga1.setBounds(1030, 90, 240, 40);
+
+        LabelHarga.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LabelHarga.setForeground(new java.awt.Color(255, 0, 51));
-        LabelHarga.setText("Harga Barang");
+        LabelHarga.setText("Harga @Item :");
         getContentPane().add(LabelHarga);
-        LabelHarga.setBounds(900, 140, 80, 30);
-        getContentPane().add(TFHarga);
-        TFHarga.setBounds(1000, 140, 270, 30);
-        getContentPane().add(TFNamaBarang);
-        TFNamaBarang.setBounds(1000, 90, 270, 30);
+        LabelHarga.setBounds(900, 90, 110, 40);
 
         TotalBelanja.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         TotalBelanja.setForeground(new java.awt.Color(255, 0, 51));
@@ -369,7 +380,7 @@ public class KasirKita extends javax.swing.JFrame {
         getContentPane().add(IO);
         IO.setBounds(680, 400, 210, 140);
 
-        Rubick.setBackground(jLabel1.getBackground());
+        Rubick.setBackground(Background.getBackground());
         Rubick.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Rubick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_The_Magus_Cypher.png"))); // NOI18N
         Rubick.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -402,40 +413,41 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(EXit);
-        EXit.setBounds(1270, 0, 34, 20);
+        EXit.setBounds(1260, 0, 34, 20);
 
-        jLabel2.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel2.setText("TOKO KITA PILIH ARCANAMU :");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 10, 880, 60);
+        Judul.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N
+        Judul.setForeground(new java.awt.Color(255, 0, 51));
+        Judul.setText("DOTA2COMMUNITYSTORE");
+        getContentPane().add(Judul);
+        Judul.setBounds(10, 10, 880, 60);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/wallpaper2you_458870.jpg"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1300, 760);
+        ResetInvit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ResetInvit.setForeground(new java.awt.Color(255, 0, 51));
+        ResetInvit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ResetInvit.setText("Reset lalu Print");
+        ResetInvit.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 51), 3, true));
+        getContentPane().add(ResetInvit);
+        ResetInvit.setBounds(1154, 560, 120, 60);
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/wallpaper2you_458870.jpg"))); // NOI18N
+        getContentPane().add(Background);
+        Background.setBounds(0, 0, 1300, 760);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void loaddata(){
+    public void loaddata() {
         file = new File("src/Data/DataArcana.txt");
         try {
             br = new BufferedReader(new FileReader(file));
-            
+
             String barisPertama = br.readLine();
             //pisah teks pada barisPertama dengan tanda koma(,)
-            //kemudian masukkan ke array
-            String[] namaKolom = barisPertama.split("#");            
+            //kemudian masukkan ke array         
+            stock = barisPertama.split("#");
         } catch (IOException e) {
         }
     }
-    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-        TabelKasir.removeRow(jTable1.getSelectedRow());
-        for (int i = jTable1.getSelectedRowCount(); i < TabelKasir.getRowCount(); i++) {
-            TabelKasir.setValueAt(i + 1, i, 0);
-        }
-    }//GEN-LAST:event_DeleteActionPerformed
-
     private void LoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadActionPerformed
         file = new File("src/Data/wkwk");
         try {
@@ -463,235 +475,261 @@ public class KasirKita extends javax.swing.JFrame {
     private void ZeusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ZeusMouseEntered
         Zeus.setOpaque(true);
         Zeus.setBackground(Color.RED);
-        TFNamaBarang.setText("Tempest Helm of the Thundergod");
-        TFHarga.setText(formatKurensi.format(800000));
+        LabelNamaBarang1.setText("Tempest Helm of the Thundergod");
+        LabelHarga1.setText(formatKurensi.format(800000));
+        StockAvailable1.setText(stock[0]);
     }//GEN-LAST:event_ZeusMouseEntered
 
     private void ZeusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ZeusMouseExited
         Zeus.setBackground(getBackground());
         Zeus.setOpaque(false);
-        TFNamaBarang.setText("");
-        TFHarga.setText("");
+        LabelNamaBarang1.setText("");
+        LabelHarga1.setText("");
+        StockAvailable1.setText("");
     }//GEN-LAST:event_ZeusMouseExited
 
     private void TechiesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TechiesMouseEntered
         Techies.setOpaque(true);
         Techies.setBackground(Color.RED);
-        TFNamaBarang.setText("Swine of the Sunken Galley");
-        TFHarga.setText(formatKurensi.format(750000));
+        LabelNamaBarang1.setText("Swine of the Sunken Galley");
+        LabelHarga1.setText(formatKurensi.format(750000));
+        StockAvailable1.setText(stock[1]);
     }//GEN-LAST:event_TechiesMouseEntered
 
     private void TechiesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TechiesMouseExited
         Techies.setBackground(getBackground());
-        TFNamaBarang.setText("");
-        TFHarga.setText("");
+        LabelNamaBarang1.setText("");
+        LabelHarga1.setText("");
+        StockAvailable1.setText("");
         Techies.setOpaque(false);
     }//GEN-LAST:event_TechiesMouseExited
 
     private void PAMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PAMouseEntered
         PA.setOpaque(true);
         PA.setBackground(Color.RED);
-        TFNamaBarang.setText("Manifold Paradox");
-        TFHarga.setText(formatKurensi.format(700000));
+        LabelNamaBarang1.setText("Manifold Paradox");
+        LabelHarga1.setText(formatKurensi.format(700000));
+        StockAvailable1.setText(stock[2]);
     }//GEN-LAST:event_PAMouseEntered
 
     private void PAMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PAMouseExited
         PA.setBackground(getBackground());
-        TFNamaBarang.setText("");
-        TFHarga.setText("");
+        LabelNamaBarang1.setText("");
+        LabelHarga1.setText("");
+        StockAvailable1.setText("");
         PA.setOpaque(false);
     }//GEN-LAST:event_PAMouseExited
 
     private void MKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MKMouseEntered
         MK.setOpaque(true);
         MK.setBackground(Color.RED);
-        TFNamaBarang.setText("Great Sage's Reckoning");
-        TFHarga.setText(formatKurensi.format(650000));
+        LabelNamaBarang1.setText("Great Sage's Reckoning");
+        LabelHarga1.setText(formatKurensi.format(650000));
+        StockAvailable1.setText(stock[3]);
     }//GEN-LAST:event_MKMouseEntered
 
     private void MKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MKMouseExited
         MK.setBackground(getBackground());
-        TFNamaBarang.setText("");
-        TFHarga.setText("");
+        LabelNamaBarang1.setText("");
+        LabelHarga1.setText("");
+        StockAvailable1.setText("");
         MK.setOpaque(false);
     }//GEN-LAST:event_MKMouseExited
 
     private void CMMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CMMouseEntered
         CM.setOpaque(true);
         CM.setBackground(Color.RED);
-        TFNamaBarang.setText("Frost Avalanche");
-        TFHarga.setText(formatKurensi.format(600000));
+        LabelNamaBarang1.setText("Frost Avalanche");
+        LabelHarga1.setText(formatKurensi.format(600000));
+        StockAvailable1.setText(stock[4]);
     }//GEN-LAST:event_CMMouseEntered
 
     private void CMMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CMMouseExited
-        TFNamaBarang.setText("");
+        LabelNamaBarang1.setText("");
         CM.setBackground(getBackground());
-        TFHarga.setText("");
+        LabelHarga1.setText("");
+        StockAvailable1.setText("");
         CM.setOpaque(false);
     }//GEN-LAST:event_CMMouseExited
 
     private void TBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TBMouseEntered
         TB.setOpaque(true);
         TB.setBackground(Color.RED);
-        TFNamaBarang.setText("Fractal Horns of Inner Abysm");
-        TFHarga.setText(formatKurensi.format(550000));
+        LabelNamaBarang1.setText("Fractal Horns of Inner Abysm");
+        LabelHarga1.setText(formatKurensi.format(550000));
+        StockAvailable1.setText(stock[5]);
     }//GEN-LAST:event_TBMouseEntered
 
     private void TBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TBMouseExited
         TB.setBackground(getBackground());
-        TFNamaBarang.setText("");
-        TFHarga.setText("");
+        LabelNamaBarang1.setText("");
+        LabelHarga1.setText("");
+        StockAvailable1.setText("");
         TB.setOpaque(false);
     }//GEN-LAST:event_TBMouseExited
 
     private void LinaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LinaMouseEntered
         Lina.setOpaque(true);
         Lina.setBackground(Color.RED);
-        TFNamaBarang.setText("Fiery Soul of the Slayer");
-        TFHarga.setText(formatKurensi.format(500000));
+        LabelNamaBarang1.setText("Fiery Soul of the Slayer");
+        LabelHarga1.setText(formatKurensi.format(500000));
+        StockAvailable1.setText(stock[6]);
     }//GEN-LAST:event_LinaMouseEntered
 
     private void LinaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LinaMouseExited
         Lina.setBackground(getBackground());
-        TFNamaBarang.setText("");
-        TFHarga.setText("");
+        LabelNamaBarang1.setText("");
+        LabelHarga1.setText("");
+        StockAvailable1.setText("");
         Lina.setOpaque(false);
     }//GEN-LAST:event_LinaMouseExited
 
     private void PudgeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PudgeMouseEntered
         Pudge.setOpaque(true);
         Pudge.setBackground(Color.RED);
-        TFNamaBarang.setText("Feast of Abscession");
-        TFHarga.setText(formatKurensi.format(450000));
+        LabelNamaBarang1.setText("Feast of Abscession");
+        LabelHarga1.setText(formatKurensi.format(450000));
+        StockAvailable1.setText(stock[7]);
     }//GEN-LAST:event_PudgeMouseEntered
 
     private void PudgeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PudgeMouseExited
         Pudge.setBackground(getBackground());
-        TFNamaBarang.setText("");
-        TFHarga.setText("");
+        LabelNamaBarang1.setText("");
+        LabelHarga1.setText("");
+        StockAvailable1.setText("");
         Pudge.setOpaque(false);
     }//GEN-LAST:event_PudgeMouseExited
 
     private void SFMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SFMouseEntered
         SF.setOpaque(true);
         SF.setBackground(Color.RED);
-        TFNamaBarang.setText("Demon Eater");
-        TFHarga.setText(formatKurensi.format(400000));
+        LabelNamaBarang1.setText("Demon Eater");
+        LabelHarga1.setText(formatKurensi.format(400000));
+        StockAvailable1.setText(stock[8]);
     }//GEN-LAST:event_SFMouseEntered
 
     private void SFMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SFMouseExited
         SF.setBackground(getBackground());
-        TFNamaBarang.setText("");
-        TFHarga.setText("");
+        LabelNamaBarang1.setText("");
+        LabelHarga1.setText("");
+        StockAvailable1.setText("");
         SF.setOpaque(false);
     }//GEN-LAST:event_SFMouseExited
 
     private void LCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LCMouseEntered
         LC.setOpaque(true);
         LC.setBackground(Color.RED);
-        TFNamaBarang.setText("Blades of Voth Domosh");
-        TFHarga.setText(formatKurensi.format(350000));
+        LabelNamaBarang1.setText("Blades of Voth Domosh");
+        LabelHarga1.setText(formatKurensi.format(350000));
+        StockAvailable1.setText(stock[9]);
     }//GEN-LAST:event_LCMouseEntered
 
     private void LCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LCMouseExited
         LC.setBackground(getBackground());
-        TFNamaBarang.setText("");
-        TFHarga.setText("");
+        LabelNamaBarang1.setText("");
+        LabelHarga1.setText("");
+        StockAvailable1.setText("");
         LC.setOpaque(false);
     }//GEN-LAST:event_LCMouseExited
 
     private void JuggerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JuggerMouseEntered
         Jugger.setOpaque(true);
         Jugger.setBackground(Color.RED);
-        TFNamaBarang.setText("Bladeform Legacy");
-        TFHarga.setText(formatKurensi.format(300000));
+        LabelNamaBarang1.setText("Bladeform Legacy");
+        LabelHarga1.setText(formatKurensi.format(300000));
+        StockAvailable1.setText(stock[10]);
     }//GEN-LAST:event_JuggerMouseEntered
 
     private void JuggerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JuggerMouseExited
         Jugger.setBackground(getBackground());
-        TFNamaBarang.setText("");
-        TFHarga.setText("");
+        LabelNamaBarang1.setText("");
+        LabelHarga1.setText("");
+        StockAvailable1.setText("");
         Jugger.setOpaque(false);
     }//GEN-LAST:event_JuggerMouseExited
 
     private void IOMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IOMouseEntered
         IO.setOpaque(true);
         IO.setBackground(Color.RED);
-        TFNamaBarang.setText("Benevolent Companion");
-        TFHarga.setText(formatKurensi.format(250000));
+        LabelNamaBarang1.setText("Benevolent Companion");
+        LabelHarga1.setText(formatKurensi.format(250000));
+        StockAvailable1.setText(stock[11]);
     }//GEN-LAST:event_IOMouseEntered
 
     private void IOMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IOMouseExited
         IO.setBackground(getBackground());
-        TFNamaBarang.setText("");
-        TFHarga.setText("");
+        LabelNamaBarang1.setText("");
+        LabelHarga1.setText("");
+        StockAvailable1.setText("");
         IO.setOpaque(false);
     }//GEN-LAST:event_IOMouseExited
 
     private void RubickMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RubickMouseEntered
         Rubick.setOpaque(true);
         Rubick.setBackground(Color.RED);
-        TFNamaBarang.setText("The Magus Cypher");
-        TFHarga.setText(formatKurensi.format(200000));
+        LabelNamaBarang1.setText("The Magus Cypher");
+        LabelHarga1.setText(formatKurensi.format(200000));
+        StockAvailable1.setText(stock[12]);
     }//GEN-LAST:event_RubickMouseEntered
 
     private void RubickMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RubickMouseExited
         Rubick.setBackground(getBackground());
-        TFNamaBarang.setText("");
-        TFHarga.setText("");
+        LabelNamaBarang1.setText("");
+        LabelHarga1.setText("");
+        StockAvailable1.setText("");
         Rubick.setOpaque(false);
     }//GEN-LAST:event_RubickMouseExited
 
     private void ZeusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ZeusMouseClicked
-        Belikuy();
+        Belikuy(0);
     }//GEN-LAST:event_ZeusMouseClicked
 
     private void TechiesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TechiesMouseClicked
-        Belikuy();
+        Belikuy(1);
     }//GEN-LAST:event_TechiesMouseClicked
 
     private void PAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PAMouseClicked
-        Belikuy();
+        Belikuy(2);
     }//GEN-LAST:event_PAMouseClicked
 
     private void MKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MKMouseClicked
-        Belikuy();
+        Belikuy(3);
     }//GEN-LAST:event_MKMouseClicked
 
     private void CMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CMMouseClicked
-        Belikuy();
+        Belikuy(4);
     }//GEN-LAST:event_CMMouseClicked
 
     private void TBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TBMouseClicked
-        Belikuy();
+        Belikuy(5);
     }//GEN-LAST:event_TBMouseClicked
 
     private void LinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LinaMouseClicked
-        Belikuy();
+        Belikuy(6);
     }//GEN-LAST:event_LinaMouseClicked
 
     private void PudgeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PudgeMouseClicked
-        Belikuy();
+        Belikuy(7);
     }//GEN-LAST:event_PudgeMouseClicked
 
     private void SFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SFMouseClicked
-        Belikuy();
+        Belikuy(8);
     }//GEN-LAST:event_SFMouseClicked
 
     private void LCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LCMouseClicked
-        Belikuy();
+        Belikuy(9);
     }//GEN-LAST:event_LCMouseClicked
 
     private void JuggerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JuggerMouseClicked
-        Belikuy();
+        Belikuy(10);
     }//GEN-LAST:event_JuggerMouseClicked
 
     private void IOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IOMouseClicked
-        Belikuy();
+        Belikuy(11);
     }//GEN-LAST:event_IOMouseClicked
 
     private void RubickMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RubickMouseClicked
-        Belikuy();
+        Belikuy(12);
     }//GEN-LAST:event_RubickMouseClicked
 
     private void EXitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EXitMouseClicked
@@ -700,7 +738,7 @@ public class KasirKita extends javax.swing.JFrame {
 
     private void EXitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EXitMouseEntered
         EXit.setOpaque(true);
-        EXit.setBackground(Color.BLUE);
+        EXit.setBackground(Color.WHITE);
     }//GEN-LAST:event_EXitMouseEntered
 
     private void EXitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EXitMouseExited
@@ -708,14 +746,15 @@ public class KasirKita extends javax.swing.JFrame {
         EXit.setOpaque(false);
     }//GEN-LAST:event_EXitMouseExited
 
-    private void Belikuy() throws HeadlessException {
+    private void Belikuy(int Stock) throws HeadlessException {
+        file = new File("src/Data/DataArcana.txt");
         String qty = JOptionPane.showInputDialog(input, "Berapa yang akan anda beli?");
-        if (TFNamaBarang.getText().trim().isEmpty() || TFHarga.getText().trim().isEmpty() || qty.isEmpty()) {
+        if (LabelNamaBarang1.getText().trim().isEmpty() || LabelHarga1.getText().trim().isEmpty() || qty.isEmpty()) {
 
         } else {
             data[0] = Integer.toString(TabelKasir.getRowCount() + 1);
-            data[1] = TFNamaBarang.getText();
-            data[2] = TFHarga.getText();
+            data[1] = LabelNamaBarang1.getText();
+            data[2] = LabelHarga1.getText();
             data[3] = qty;
             boolean belumAda = true;
             for (int i = 0; i < TabelKasir.getRowCount(); i++) {
@@ -726,15 +765,27 @@ public class KasirKita extends javax.swing.JFrame {
             }
             if (belumAda) {
                 TabelKasir.addRow(data);
-                TFNamaBarang.setText("");
-                TFHarga.setText("");
+                LabelNamaBarang1.setText("");
+                LabelHarga1.setText("");
+                StockAvailable1.setText("");
                 Double total = 0.0;
                 for (int i = 0; i < TabelKasir.getRowCount(); i++) {
                     String harga = (String) TabelKasir.getValueAt(i, 2);
                     Double temp = Double.parseDouble((String) TabelKasir.getValueAt(i, 3)) * Double.parseDouble(harga.replaceAll("[^0-9.]", ""));
                     total += temp;
                 }
-                HasilTB.setText(formatKurensi.format(total));               
+                HasilTB.setText(formatKurensi.format(total));
+                stock[Stock]=String.valueOf(Integer.parseInt(stock[Stock])-Integer.parseInt(qty));
+                try {
+                    bw = new BufferedWriter(new FileWriter(file));
+                    for (int i = 0; i <stock.length; i++) {
+                        if (i>0) 
+                            bw.write("#");                        
+                        bw.write(stock[i]);
+                    }
+                    bw.close();
+                } catch (Exception e) {
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Data sudah ada !!!");
             }
@@ -777,30 +828,32 @@ public class KasirKita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     private javax.swing.JLabel CM;
-    private javax.swing.JButton Delete;
     private javax.swing.JLabel EXit;
     private javax.swing.JLabel HasilTB;
     private javax.swing.JLabel IO;
+    private javax.swing.JLabel Judul;
     private javax.swing.JLabel Jugger;
     private javax.swing.JLabel LC;
     private javax.swing.JLabel LabelHarga;
+    private javax.swing.JLabel LabelHarga1;
     private javax.swing.JLabel LabelNamaBarang;
+    private javax.swing.JLabel LabelNamaBarang1;
     private javax.swing.JLabel Lina;
     private javax.swing.JButton Load;
     private javax.swing.JLabel MK;
     private javax.swing.JLabel PA;
     private javax.swing.JLabel Pudge;
+    private javax.swing.JLabel ResetInvit;
     private javax.swing.JLabel Rubick;
     private javax.swing.JLabel SF;
+    private javax.swing.JLabel StockAvailable;
+    private javax.swing.JLabel StockAvailable1;
     private javax.swing.JLabel TB;
-    private javax.swing.JTextField TFHarga;
-    private javax.swing.JTextField TFNamaBarang;
     private javax.swing.JLabel Techies;
     private javax.swing.JLabel TotalBelanja;
     private javax.swing.JLabel Zeus;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
