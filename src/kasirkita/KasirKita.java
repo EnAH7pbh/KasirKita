@@ -91,9 +91,11 @@ public class KasirKita extends javax.swing.JFrame {
         EXit = new javax.swing.JLabel();
         Judul = new javax.swing.JLabel();
         ResetInvit = new javax.swing.JLabel();
+        History = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/Images/b37ee2f20af88890f3cc51fcb8f2898dfa95e777_full.jpg")).getImage());
         setMaximumSize(new java.awt.Dimension(1300, 760));
         setMinimumSize(new java.awt.Dimension(1300, 760));
         setUndecorated(true);
@@ -138,7 +140,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Load);
-        Load.setBounds(920, 560, 70, 60);
+        Load.setBounds(890, 560, 70, 60);
 
         LabelNamaBarang1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LabelNamaBarang1.setForeground(new java.awt.Color(255, 0, 51));
@@ -428,6 +430,19 @@ public class KasirKita extends javax.swing.JFrame {
         ResetInvit.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 51), 3, true));
         getContentPane().add(ResetInvit);
         ResetInvit.setBounds(1154, 560, 120, 60);
+
+        History.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        History.setForeground(new java.awt.Color(255, 0, 51));
+        History.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        History.setText("History");
+        History.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 51), 3, true));
+        History.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HistoryMouseClicked(evt);
+            }
+        });
+        getContentPane().add(History);
+        History.setBounds(1030, 560, 100, 60);
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/wallpaper2you_458870.jpg"))); // NOI18N
         getContentPane().add(Background);
@@ -746,6 +761,10 @@ public class KasirKita extends javax.swing.JFrame {
         EXit.setOpaque(false);
     }//GEN-LAST:event_EXitMouseExited
 
+    private void HistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HistoryMouseClicked
+        
+    }//GEN-LAST:event_HistoryMouseClicked
+
     private void Belikuy(int Stock) throws HeadlessException {
         file = new File("src/Data/DataArcana.txt");
         String qty = JOptionPane.showInputDialog(input, "Berapa yang akan anda beli?");
@@ -832,6 +851,7 @@ public class KasirKita extends javax.swing.JFrame {
     private javax.swing.JLabel CM;
     private javax.swing.JLabel EXit;
     private javax.swing.JLabel HasilTB;
+    private javax.swing.JLabel History;
     private javax.swing.JLabel IO;
     private javax.swing.JLabel Judul;
     private javax.swing.JLabel Jugger;
