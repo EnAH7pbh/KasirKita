@@ -1,0 +1,4 @@
+No|Nama Barang|Harga Barang|Qty
+1_Tempest Helm of the Thundergod_IDR800,000.00_1
+2_Feast of Abscession_IDR450,000.00_9
+Total Belanja : IDR4,850,000.00
