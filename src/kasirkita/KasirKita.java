@@ -782,10 +782,12 @@ public class KasirKita extends javax.swing.JFrame {
     }//GEN-LAST:event_EXitMouseExited
 
     private void HistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HistoryMouseClicked
-        TabelKasir.setRowCount(0);
-        HasilTB.setText("");
-        BAYARTB.setText("");
-        KEMBALIANTB.setText("");
+        if (BAYARTB.getText() != "") {
+            TabelKasir.setRowCount(0);
+            HasilTB.setText("");
+            BAYARTB.setText("");
+            KEMBALIANTB.setText("");
+        }
     }//GEN-LAST:event_HistoryMouseClicked
 
     private void PROCEEDMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PROCEEDMouseEntered
@@ -814,7 +816,7 @@ public class KasirKita extends javax.swing.JFrame {
         Double temp = Double.parseDouble(tb.replaceAll("[^0-9.]", ""));
         Double bbyer = Double.valueOf(Bbyer);
         if (bbyer >= temp) {
-            Double kembalian = bbyer-temp;
+            Double kembalian = bbyer - temp;
             BAYARTB.setText(formatKurensi.format(bbyer));
             KEMBALIANTB.setText(formatKurensi.format(kembalian));
         }
@@ -837,7 +839,7 @@ public class KasirKita extends javax.swing.JFrame {
                     break;
                 }
             }
-            if (belumAda) {
+            if (belumAda && Integer.parseInt(stock[Stock]) >= Integer.parseInt(qty)) {
                 TabelKasir.addRow(data);
                 LabelNamaBarang1.setText("");
                 LabelHarga1.setText("");
@@ -848,8 +850,8 @@ public class KasirKita extends javax.swing.JFrame {
                     Double temp = Double.parseDouble((String) TabelKasir.getValueAt(i, 3)) * Double.parseDouble(harga.replaceAll("[^0-9.]", ""));
                     total += temp;
                 }
-                HasilTB.setText(formatKurensi.format(total));
                 stock[Stock] = String.valueOf(Integer.parseInt(stock[Stock]) - Integer.parseInt(qty));
+                HasilTB.setText(formatKurensi.format(total));
                 try {
                     bw = new BufferedWriter(new FileWriter(file));
                     for (int i = 0; i < stock.length; i++) {
@@ -862,7 +864,7 @@ public class KasirKita extends javax.swing.JFrame {
                 } catch (Exception e) {
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Data sudah ada !!!");
+                JOptionPane.showMessageDialog(null, "Inputan Error");
             }
         }
     }
