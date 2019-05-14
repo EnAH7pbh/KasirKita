@@ -41,7 +41,7 @@ public class KasirKita extends javax.swing.JFrame {
     Date waktu;
     SimpleDateFormat formatTanggal;
     JFrame input;
-    
+
     public KasirKita() {
         initComponents();
         data = new String[4];
@@ -66,14 +66,17 @@ public class KasirKita extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        Load = new javax.swing.JButton();
         LabelNamaBarang1 = new javax.swing.JLabel();
         LabelNamaBarang = new javax.swing.JLabel();
         StockAvailable1 = new javax.swing.JLabel();
         StockAvailable = new javax.swing.JLabel();
         LabelHarga1 = new javax.swing.JLabel();
         LabelHarga = new javax.swing.JLabel();
+        BAYAR = new javax.swing.JLabel();
+        TotalBelanja1 = new javax.swing.JLabel();
         TotalBelanja = new javax.swing.JLabel();
+        KEMBALIANTB = new javax.swing.JLabel();
+        BAYARTB = new javax.swing.JLabel();
         HasilTB = new javax.swing.JLabel();
         Zeus = new javax.swing.JLabel();
         Techies = new javax.swing.JLabel();
@@ -90,7 +93,7 @@ public class KasirKita extends javax.swing.JFrame {
         Rubick = new javax.swing.JLabel();
         EXit = new javax.swing.JLabel();
         Judul = new javax.swing.JLabel();
-        ResetInvit = new javax.swing.JLabel();
+        PROCEED = new javax.swing.JLabel();
         History = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
@@ -121,6 +124,7 @@ public class KasirKita extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setOpaque(false);
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setPreferredWidth(30);
@@ -132,16 +136,7 @@ public class KasirKita extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(900, 200, 370, 340);
-
-        Load.setText("Load");
-        Load.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoadActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Load);
-        Load.setBounds(890, 560, 70, 60);
+        jScrollPane1.setBounds(900, 200, 370, 230);
 
         LabelNamaBarang1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LabelNamaBarang1.setForeground(new java.awt.Color(255, 0, 51));
@@ -176,17 +171,41 @@ public class KasirKita extends javax.swing.JFrame {
         getContentPane().add(LabelHarga);
         LabelHarga.setBounds(900, 90, 110, 40);
 
+        BAYAR.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        BAYAR.setForeground(new java.awt.Color(255, 0, 51));
+        BAYAR.setText("BAYAR :");
+        getContentPane().add(BAYAR);
+        BAYAR.setBounds(670, 620, 220, 60);
+
+        TotalBelanja1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        TotalBelanja1.setForeground(new java.awt.Color(255, 0, 51));
+        TotalBelanja1.setText("KEMBALIAN :");
+        getContentPane().add(TotalBelanja1);
+        TotalBelanja1.setBounds(670, 690, 220, 60);
+
         TotalBelanja.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         TotalBelanja.setForeground(new java.awt.Color(255, 0, 51));
         TotalBelanja.setText("TOTAL BELANJA :");
         getContentPane().add(TotalBelanja);
-        TotalBelanja.setBounds(740, 650, 220, 60);
+        TotalBelanja.setBounds(670, 550, 220, 60);
+
+        KEMBALIANTB.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        KEMBALIANTB.setForeground(new java.awt.Color(255, 0, 51));
+        KEMBALIANTB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(KEMBALIANTB);
+        KEMBALIANTB.setBounds(930, 690, 340, 60);
+
+        BAYARTB.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        BAYARTB.setForeground(new java.awt.Color(255, 0, 51));
+        BAYARTB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(BAYARTB);
+        BAYARTB.setBounds(930, 620, 340, 60);
 
         HasilTB.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         HasilTB.setForeground(new java.awt.Color(255, 0, 51));
         HasilTB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(HasilTB);
-        HasilTB.setBounds(980, 650, 290, 60);
+        HasilTB.setBounds(930, 550, 340, 60);
 
         Zeus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Zeus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/200px-Cosmetic_icon_Tempest_Helm_of_the_Thundergod.png"))); // NOI18N
@@ -424,26 +443,29 @@ public class KasirKita extends javax.swing.JFrame {
         getContentPane().add(Judul);
         Judul.setBounds(10, 10, 880, 60);
 
-        ResetInvit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ResetInvit.setForeground(new java.awt.Color(255, 0, 51));
-        ResetInvit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ResetInvit.setText("Reset lalu Print");
-        ResetInvit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
-        ResetInvit.addMouseListener(new java.awt.event.MouseAdapter() {
+        PROCEED.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        PROCEED.setForeground(new java.awt.Color(255, 0, 51));
+        PROCEED.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PROCEED.setText("PROCEED");
+        PROCEED.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
+        PROCEED.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PROCEEDMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ResetInvitMouseEntered(evt);
+                PROCEEDMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                ResetInvitMouseExited(evt);
+                PROCEEDMouseExited(evt);
             }
         });
-        getContentPane().add(ResetInvit);
-        ResetInvit.setBounds(1154, 560, 120, 60);
+        getContentPane().add(PROCEED);
+        PROCEED.setBounds(1150, 470, 120, 60);
 
         History.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         History.setForeground(new java.awt.Color(255, 0, 51));
         History.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        History.setText("History");
+        History.setText("Reset");
         History.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
         History.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -457,7 +479,7 @@ public class KasirKita extends javax.swing.JFrame {
             }
         });
         getContentPane().add(History);
-        History.setBounds(1030, 560, 100, 60);
+        History.setBounds(1020, 470, 100, 60);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 51));
@@ -477,7 +499,7 @@ public class KasirKita extends javax.swing.JFrame {
         file = new File("src/Data/DataArcana.txt");
         try {
             br = new BufferedReader(new FileReader(file));
-            
+
             String barisPertama = br.readLine();
             //pisah teks pada barisPertama dengan tanda koma(,)
             //kemudian masukkan ke array         
@@ -485,30 +507,6 @@ public class KasirKita extends javax.swing.JFrame {
         } catch (IOException e) {
         }
     }
-    private void LoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadActionPerformed
-        file = new File("src/Data/wkwk");
-        try {
-            Object[] dataBaris = br.lines().toArray();
-            String barisPertama = br.readLine();
-            
-            String[] namaKolom = barisPertama.split(",");
-            //ambil model dan atur nama kolom tabel
-            TabelKasir.setColumnIdentifiers(namaKolom);
-            //ambil baris selanjutnya secara keseluruhan
-            //dan masukkan ke array
-            for (int i = 0; i < dataBaris.length; i++) {
-                //ambil tiap baris dari dataBaris
-                String baris = dataBaris[i].toString();
-                //pisah baris dengan tanda / dan masukkan array
-                String[] datatxt = baris.split("/");
-                //data masukan ke tabel
-                TabelKasir.addRow(datatxt);
-            }
-            br.close();
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_LoadActionPerformed
-
     private void ZeusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ZeusMouseEntered
         Zeus.setOpaque(true);
         Zeus.setBackground(Color.RED);
@@ -784,18 +782,21 @@ public class KasirKita extends javax.swing.JFrame {
     }//GEN-LAST:event_EXitMouseExited
 
     private void HistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HistoryMouseClicked
-        
+        TabelKasir.setRowCount(0);
+        HasilTB.setText("");
+        BAYARTB.setText("");
+        KEMBALIANTB.setText("");
     }//GEN-LAST:event_HistoryMouseClicked
 
-    private void ResetInvitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ResetInvitMouseEntered
-        ResetInvit.setOpaque(true);
-        ResetInvit.setBackground(Color.WHITE);
-    }//GEN-LAST:event_ResetInvitMouseEntered
+    private void PROCEEDMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PROCEEDMouseEntered
+        PROCEED.setOpaque(true);
+        PROCEED.setBackground(Color.WHITE);
+    }//GEN-LAST:event_PROCEEDMouseEntered
 
-    private void ResetInvitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ResetInvitMouseExited
-        ResetInvit.setBackground(getBackground());
-        ResetInvit.setOpaque(false);
-    }//GEN-LAST:event_ResetInvitMouseExited
+    private void PROCEEDMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PROCEEDMouseExited
+        PROCEED.setBackground(getBackground());
+        PROCEED.setOpaque(false);
+    }//GEN-LAST:event_PROCEEDMouseExited
 
     private void HistoryMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HistoryMouseEntered
         History.setOpaque(true);
@@ -806,12 +807,24 @@ public class KasirKita extends javax.swing.JFrame {
         History.setBackground(getBackground());
         History.setOpaque(false);
     }//GEN-LAST:event_HistoryMouseExited
-    
+
+    private void PROCEEDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PROCEEDMouseClicked
+        String Bbyer = JOptionPane.showInputDialog(input, "Masukkan Bayar");
+        String tb = HasilTB.getText();
+        Double temp = Double.parseDouble(tb.replaceAll("[^0-9.]", ""));
+        Double bbyer = Double.valueOf(Bbyer);
+        if (bbyer >= temp) {
+            Double kembalian = bbyer-temp;
+            BAYARTB.setText(formatKurensi.format(bbyer));
+            KEMBALIANTB.setText(formatKurensi.format(kembalian));
+        }
+    }//GEN-LAST:event_PROCEEDMouseClicked
+
     private void Belikuy(int Stock) throws HeadlessException {
         file = new File("src/Data/DataArcana.txt");
         String qty = JOptionPane.showInputDialog(input, "Berapa yang akan anda beli?");
         if (LabelNamaBarang1.getText().trim().isEmpty() || LabelHarga1.getText().trim().isEmpty() || qty.isEmpty()) {
-            
+
         } else {
             data[0] = Integer.toString(TabelKasir.getRowCount() + 1);
             data[1] = LabelNamaBarang1.getText();
@@ -842,7 +855,7 @@ public class KasirKita extends javax.swing.JFrame {
                     for (int i = 0; i < stock.length; i++) {
                         if (i > 0) {
                             bw.write("#");
-                        }                        
+                        }
                         bw.write(stock[i]);
                     }
                     bw.close();
@@ -890,6 +903,8 @@ public class KasirKita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BAYAR;
+    private javax.swing.JLabel BAYARTB;
     private javax.swing.JLabel Background;
     private javax.swing.JLabel CM;
     private javax.swing.JLabel EXit;
@@ -898,17 +913,17 @@ public class KasirKita extends javax.swing.JFrame {
     private javax.swing.JLabel IO;
     private javax.swing.JLabel Judul;
     private javax.swing.JLabel Jugger;
+    private javax.swing.JLabel KEMBALIANTB;
     private javax.swing.JLabel LC;
     private javax.swing.JLabel LabelHarga;
     private javax.swing.JLabel LabelHarga1;
     private javax.swing.JLabel LabelNamaBarang;
     private javax.swing.JLabel LabelNamaBarang1;
     private javax.swing.JLabel Lina;
-    private javax.swing.JButton Load;
     private javax.swing.JLabel MK;
     private javax.swing.JLabel PA;
+    private javax.swing.JLabel PROCEED;
     private javax.swing.JLabel Pudge;
-    private javax.swing.JLabel ResetInvit;
     private javax.swing.JLabel Rubick;
     private javax.swing.JLabel SF;
     private javax.swing.JLabel StockAvailable;
@@ -916,6 +931,7 @@ public class KasirKita extends javax.swing.JFrame {
     private javax.swing.JLabel TB;
     private javax.swing.JLabel Techies;
     private javax.swing.JLabel TotalBelanja;
+    private javax.swing.JLabel TotalBelanja1;
     private javax.swing.JLabel Zeus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
