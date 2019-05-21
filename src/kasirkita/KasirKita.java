@@ -16,7 +16,6 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFrame;
@@ -47,7 +46,6 @@ public class KasirKita extends javax.swing.JFrame {
         data = new String[4];
         simpanan = new File("src/Data");
         waktu = new Date();
-        formatTanggal = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
         formatKurensi = NumberFormat.getCurrencyInstance(getLocale());
         TabelKasir = (DefaultTableModel) jTable1.getModel();
         input = new JFrame("Masukkan Qty");
@@ -768,7 +766,9 @@ public class KasirKita extends javax.swing.JFrame {
     }//GEN-LAST:event_RubickMouseClicked
 
     private void EXitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EXitMouseClicked
-        System.exit(0);
+        if (HasilTB.getText() == "") {
+            System.exit(0);
+        }
     }//GEN-LAST:event_EXitMouseClicked
 
     private void EXitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EXitMouseEntered
